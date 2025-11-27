@@ -1,16 +1,16 @@
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-import custom_models.ollama_llm # Register OllamaLlm
-
 
 env_path = Path(__file__) / ".env"
 
+
 class bcolors:
-    ORANGE = '\033[33m'
-    OKBLUE = '\033[94m'
+    ORANGE = "\033[33m"
+    OKBLUE = "\033[94m"
     OKGREEN = "\033[92m"
-    RESET = '\033[0m'
+    RESET = "\033[0m"
+
 
 # Load the .env file from the explicit path.
 load_dotenv(dotenv_path=env_path)

@@ -1,5 +1,6 @@
 import yfinance as yf
 
+
 def get_stock_metrics(ticker: str) -> dict:
     """
     Retrieves fundamental metrics for a given stock ticker (e.g., 'AAPL', 'GOOG').
@@ -8,7 +9,9 @@ def get_stock_metrics(ticker: str) -> dict:
     try:
         stock = yf.Ticker(ticker)
         info = stock.info
-        
+
+        print(info.keys())
+
         # Simplified data for the agent to digest
         data = {
             "current_price": info.get("currentPrice"),
@@ -17,7 +20,8 @@ def get_stock_metrics(ticker: str) -> dict:
             "forward_pe": info.get("forwardPE"),
             "dividend_yield": info.get("dividendYield"),
             "free_cash_flow": info.get("freeCashflow"),
-            "sector": info.get("sector")
+            "return_on_equity": info.get("returnOnEquity"),
+            "sector": info.get("sector"),
         }
         return data
     except Exception as e:

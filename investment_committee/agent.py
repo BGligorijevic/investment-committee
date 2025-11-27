@@ -5,7 +5,7 @@ from google.genai.types import Content, Part
 from investment_committee.sub_agents.value.agent import build_value_agent
 from investment_committee.sub_agents.growth.agent import build_growth_agent
 from tools.stock_metrics import get_stock_metrics
-from config import MODEL
+from config import model
 
 os.environ["OTEL_SDK_DISABLED"] = "true"
 
@@ -75,16 +75,16 @@ async def ask_committee(request: str) -> str:
             # checking event.author ensures it came from a sub-agent
             if text_content and event.author:
                 transcript.append(
-                    f"--- REPORT FROM {event.author.upper()} ---\n{text_content}\n"
+                    f"\n--- REPORT FROM {event.author.upper()} ---\n{text_content}\n"
                 )
 
     return "\n".join(transcript) if transcript else "The committee was silent."
 
 
-def build_chairperson_agent(model_name=MODEL):
+def build_chairperson_agent():
     return LlmAgent(
         name="Chairperson",
-        model=model_name,
+        model=model,
         instruction=CHAIRPERSON_PERSONA,
         tools=[get_stock_metrics, ask_committee],
     )

@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+from google.adk.models.lite_llm import LiteLlm
 
 env_path = Path(__file__) / ".env"
 
@@ -17,7 +18,13 @@ load_dotenv(dotenv_path=env_path)
 
 print(f"\n{bcolors.ORANGE}{'='*30} CONFIG {'='*30}")
 
-MODEL = os.environ.get("MODEL", "gemini-2.5-flash")
-print(f"Model: '{MODEL}'")
+MODEL_PARAM = os.environ.get("MODEL", "gemini-2.5-flash")
+print(f"Model: '{MODEL_PARAM}'")
+
+if MODEL_PARAM.startswith("ollama/") or "llama" in MODEL_PARAM:
+    full_model_name = f"ollama_chat/{MODEL_PARAM}"
+    model = LiteLlm(model=full_model_name)
+else:
+    model = MODEL_PARAM
 
 print(f"{'='*68}{bcolors.RESET}\n")

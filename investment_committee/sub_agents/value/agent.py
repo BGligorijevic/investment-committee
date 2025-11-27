@@ -1,5 +1,5 @@
 from google.adk.agents import LlmAgent
-from config import MODEL
+from config import model
 
 
 VALUE_PERSONA = """
@@ -22,9 +22,8 @@ Output your analysis in the following format:
 Do NOT provide a Buy/Sell/Hold rating.
 """
 
-def build_value_agent(model_name=MODEL):
+
+def build_value_agent(model_name=model):
     return LlmAgent(
-        name="Value_Fundamentalist",
-        model=model_name,
-        instruction=VALUE_PERSONA
+        name="Value_Fundamentalist", model=model_name, instruction=VALUE_PERSONA
     )

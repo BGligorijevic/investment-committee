@@ -1,5 +1,5 @@
 from google.adk.agents import LlmAgent
-from config import MODEL
+from config import model
 
 GROWTH_PERSONA = """
 You are 'The Growth Visionary'.
@@ -17,9 +17,6 @@ Output your analysis in the following format:
 Do NOT provide a Buy/Sell/Hold rating.
 """
 
-def build_growth_agent(model_name=MODEL):
-    return LlmAgent(
-        name="Growth_Visionary",
-        model=model_name,
-        instruction=GROWTH_PERSONA
-    )
+
+def build_growth_agent():
+    return LlmAgent(name="Growth_Visionary", model=model, instruction=GROWTH_PERSONA)

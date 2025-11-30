@@ -20,10 +20,21 @@ Output a concise "Macro Environment Report".
 """
 
 
+from google.adk.models.lite_llm import LiteLlm
+
+
 def build_macro_agent() -> LlmAgent:
+    agent_tools = [get_market_overview]
+
+    # Check if we are using LiteLlm (Ollama)
+    is_ollama = isinstance(model, LiteLlm)
+
+    if not is_ollama:
+        agent_tools.append(GoogleSearchTool(bypass_multi_tools_limit=True))
+
     return LlmAgent(
         name="macro_analyst",
         model=model,
         instruction=MACRO_PERSONA,
-        tools=[get_market_overview, GoogleSearchTool(bypass_multi_tools_limit=True)],
+        tools=agent_tools,
     )

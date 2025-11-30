@@ -13,8 +13,6 @@ Output your analysis in the following format:
 1. Analysis: A brief explanation of your reasoning.
 2. Estimated Yearly Return: A percentage (e.g., "15%").
 3. Risk Score: A number from 1 (lowest) to 10 (highest).
-
-Do NOT provide a Buy/Sell/Hold rating.
 """
 
 

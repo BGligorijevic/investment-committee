@@ -19,4 +19,4 @@ Do NOT provide a Buy/Sell/Hold rating.
 
 
 def build_growth_agent():
-    return LlmAgent(name="Growth_Visionary", model=model, instruction=GROWTH_PERSONA)
+    return LlmAgent(name="growth_analyst", model=model, instruction=GROWTH_PERSONA)

@@ -24,6 +24,4 @@ Do NOT provide a Buy/Sell/Hold rating.
 
 
 def build_value_agent(model_name=model):
-    return LlmAgent(
-        name="Value_Fundamentalist", model=model_name, instruction=VALUE_PERSONA
-    )
+    return LlmAgent(name="value_analyst", model=model_name, instruction=VALUE_PERSONA)

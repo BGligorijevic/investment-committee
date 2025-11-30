@@ -15,4 +15,6 @@ pip install -r backend/requirements.txt
 ```
 adk web
 ```
-Write a stock ticker in the prompt box (e.g. AAPL) and press enter.
+Write a company name (or a stock ticker) in the prompt box (e.g. "Apple" or "AAPL") and press enter.  
+The "chairman" will pass the company analysis to several "analysts" with different perspectives and focus (macro, growth, value, technicals, etc.).   
+In the end, the "chairman" will provide a final recommendation based on the analysis of all agents.
